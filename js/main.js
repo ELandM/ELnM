@@ -150,13 +150,19 @@
 	contentWayPoint();
 
 	$('.appointment_date-check-in').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
+	format: 'm/d/yyyy',
+	autoclose: true,
+	startDate: new Date()
+	}).on('changeDate', function(e) {
+	var checkInDate = e.date;
+	$('.appointment_date-check-out').datepicker('setStartDate', checkInDate);
 	});
-	$('.appointment_date-check-out').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
-	});
+
+	// $('.appointment_date-check-out').datepicker({
+	// format: 'm/d/yyyy',
+	// autoclose: true,
+	// startDate: new Date() // disable all past dates
+	// });
 
 	$('.appointment_time').timepicker();
 
